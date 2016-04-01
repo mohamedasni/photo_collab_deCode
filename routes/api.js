@@ -2,9 +2,10 @@
 
 var Project = require('../models/Project');
 var mongoose = require('mongoose');
+var imageString; //This will be the converted image!
 
 app.post('/api/project',function (req, res) {
-	Project.newProject(req,req);
+	Project.newProject(req,res, imageString);
 });
 
 app.get('/api/project',function (req, res) {
