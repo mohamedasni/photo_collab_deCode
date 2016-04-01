@@ -1,25 +1,33 @@
 /*api_post.js*/
-
+var express = require('express');
+var router = express.Router();
 var Project = require('../models/Project');
 var mongoose = require('mongoose');
+var path = require('path');
 var imageString; //This will be the converted image!
 
-app.post('/api/project',function (req, res) {
+router.get('/', function(req, res) {
+	res.send("Hello World!");
+});
+
+router.post('/api/project',function (req, res) {
 	Project.newProject(req,res, imageString);
 });
 
-app.get('/api/project',function (req, res) {
+router.get('/api/project',function (req, res) {
 	Project.findProject(req,res);
 });
 
-app.post('/api/annotations',function (req,res){
+router.post('/api/annotations',function (req,res){
 	Project.addAnnotation(req,res, imageString);
 });
 
-app.get('/api/annotations',function (req,res){
+router.get('/api/annotations',function (req,res){
 	Project.findAnnotation(req,res);
 });
 
-app.post('/api/comments',function (req,res){
+router.post('/api/comments',function (req,res){
 	Project.addComment(req,res);
 });
+
+module.exports = router;
