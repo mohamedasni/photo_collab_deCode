@@ -50,6 +50,10 @@ ProjectSchema.methods.addIniAnnotation = function(req, imageString){
     this.annotation.push(data);
 };
 
+ProjectSchema.methods.addAnnotation = function(req,res, imageString){
+
+};
+
 module.exports = {
     model: mongoose.model('Project', ProjectSchema),
     schema: ProjectSchema
