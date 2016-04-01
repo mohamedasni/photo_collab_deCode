@@ -1,0 +1,18 @@
+{
+  "name": "photo_collab_deCode",
+  "description": "Foko Team Project for deCode",
+  "main": "",
+  "authors": [
+    "Foko deCode Team"
+  ],
+  "license": "MIT",
+  "moduleType": [],
+  "homepage": "",
+  "dependencies": {
+    "angular": "angularjs#^1.5.3",
+    "bootstrap": "^3.3.6",
+    "font-awesome": "^4.5.0",
+    "angular-route": "^1.5.3",
+    "angular-bootstrap": "^1.2.5"
+  }
+}
