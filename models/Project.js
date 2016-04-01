@@ -45,9 +45,9 @@ ProjectSchema.statics.newProject = function(req, res, imageString){
     addIniAnnotation(project, req, imageString);
 };
 
-ProjectSchema.methods.addIniAnnotation = function(project, req, imageString){
+ProjectSchema.methods.addIniAnnotation = function(req, imageString){
     var data = {user: req.body.uName, img: imageString};
-    project.annotation.push(data);
+    this.annotation.push(data);
 };
 
 module.exports = {
