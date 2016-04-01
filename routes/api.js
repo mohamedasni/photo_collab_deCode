@@ -13,7 +13,7 @@ app.get('/api/project',function (req, res) {
 });
 
 app.post('/api/annotations',function (req,res){
-	Project.addAnotation(req,res, imageString);
+	Project.addAnnotation(req,res, imageString);
 });
 
 app.get('/api/annotations',function (req,res){
