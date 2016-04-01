@@ -51,7 +51,7 @@ ProjectSchema.methods.addIniAnnotation = function(req, imageString){
 };
 
 ProjectSchema.methods.addAnnotation = function(req,res, imageString){
-
+    //blabla
 };
 
 module.exports = {
