@@ -17,7 +17,7 @@ app.post('/api/annotations',function (req,res){
 });
 
 app.get('/api/annotations',function (req,res){
-	Project.findAnotation(req,res);
+	Project.findAnnotation(req,res);
 });
 
 app.post('/api/comments',function (req,res){
