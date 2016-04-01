@@ -5,6 +5,10 @@ var Project = require('../models/Project');
 var mongoose = require('mongoose');
 var path = require('path');
 var imageString; //This will be the converted image!
+function img_to_base64(imageString){
+	imageString.base64('/api/project/photo');
+}
+
 
 router.get('/', function(req, res) {
 	res.send("Hello World!");
