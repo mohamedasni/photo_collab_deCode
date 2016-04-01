@@ -71,7 +71,10 @@ ProjectSchema.methods.findProject = function(req, res) {
 ProjectSchema.methods.addAnnotation = function(req,res, imageString){
     //blabla
 };
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 
 module.exports = {
     model: mongoose.model('Project', ProjectSchema),
