@@ -4,7 +4,7 @@ var Project = require('../models/Project');
 var mongoose = require('mongoose');
 
 app.post('/api/project',function (req, res) {
-	new Project.newProject(req,req);
+	Project.newProject(req,req);
 });
 
 app.get('/api/project',function (req, res) {
