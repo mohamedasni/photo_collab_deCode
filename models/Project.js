@@ -52,6 +52,19 @@ ProjectSchema.methods.addIniAnnotation = function(req, imageString){
 
 ProjectSchema.methods.findProject = function(req, res) {
   var project = mongoose.model('Project', ProjectSchema);
+}
+
+ProjectSchema.methods.findAnnotation = function(req,res){
+    var data = this.annotation[req.body.index];
+    if(data != null){
+        res.send(data);
+    }else{
+        res.sendStatus(403);
+    }
+}
+
+ProjectSchema.methods.findProject = function(req, res) {
+  var project = mongoose.model('Project', ProjectSchema);
 
 }
 
