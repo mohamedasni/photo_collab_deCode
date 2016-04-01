@@ -3,7 +3,7 @@ Hey Foko deCode Team!
 
 Just a few instructions on how to setup:
 
-If you guys are using and IntelliJ IDEA IDE such as Webstorm (free for student btw!!), just do check out from version control and it should clone the project for you guys. This could save time, I suggest you all try to use an IDE that has GIT integrated into it, rather using the command line every time! (You can try to download Webstorm, again free for students!, and I will show you how to push and pull from the repo if you could not figure it out)
+If you guys are using an IntelliJ IDEA IDE such as Webstorm (free for student btw!!), just do check out from version control and it should clone the project for you guys. This could save time, I suggest you all try to use an IDE that has GIT integrated into it, rather using the command line every time! (You can try to download Webstorm, again free for students!, and I will show you how to push and pull from the repo if you could not figure it out)
 
 Once you have cloned the project follow these steps:
 
