@@ -20,7 +20,7 @@ var ProjectSchema = new mongoose.Schema({
     }]
 });
 
-ProjectSchema.statics.newProject = function(req, res){
+ProjectSchema.statics.newProject = function(req, res, imageString){
     var project = new this({
         projectName: req.body.pName,
         user: req.body.uName
@@ -42,11 +42,11 @@ ProjectSchema.statics.newProject = function(req, res){
         }
     });
 
-    addIniAnnotation(project, req);
+    addIniAnnotation(project, req, imageString);
 };
 
-ProjectSchema.methods.addIniAnnotation = function(project, req){
-    var data = {user: req.body.uName, img: req.body.img};
+ProjectSchema.methods.addIniAnnotation = function(project, req, imageString){
+    var data = {user: req.body.uName, img: imageString};
     project.annotation.push(data);
 };
 
