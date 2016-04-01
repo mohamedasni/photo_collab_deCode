@@ -6,6 +6,7 @@ var mongoose = require("mongoose");
 
 
 var ProjectSchema = new mongoose.Schema({
+    projectname: {type: String, required: true},
     user: {type: String, required: true},
     annotation: [{
         user: {type: String, required: true},
