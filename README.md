@@ -47,6 +47,17 @@ returns
 ##POST /api/project
 A post request to /api/project must be accompanied with JSON data within the string body. JSON data must be of the from below:
 
+##DELETE /api/project
+A delete request to /api/project removes the project with the matching id. Returns OK status.
+
+request body
+
+```json
+    {
+        "projectID" : "project id (from get all projects) - string"
+    }
+```
+
 request body
 ```json
     {
@@ -87,6 +98,16 @@ This is how you add an annotation to an existing project. Returns image, usernam
 }
 ```
 
+##DELETE /api/annotation
+This deletes annotation at index from project with id.
+
+```json
+    {
+        "projectID" : "project id (from get all projects) - string",
+        "annIndex" : "index of annotation( valid from 0 to annotations.length - 1) - number"
+    }
+```
+
 ##POST /api/comments
 This is how you add a comment to an existing annotation. Returns added comment.
 
@@ -99,4 +120,15 @@ request body
     "annIndex" : "index of annotation( valid from 0 to annotations.length - 1) - number"
 
 }
+```
+
+##DELETE /api/comments
+This deletes annotation at index from project with id.
+
+```json
+    {
+        "projectID" : "project id (from get all projects) - string",
+        "annIndex" : "index of annotation( valid from 0 to annotations.length - 1) - number",
+        "commIndex" : "index of comment( valid from 0 to comments.length - 1) - number"
+    }
 ```
