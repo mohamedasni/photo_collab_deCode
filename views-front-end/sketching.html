@@ -76,24 +76,35 @@
         var m = confirm("Want to clear");
         if (m) {
             ctx.clearRect(0, 0, w, h);
-            document.getElementById("canvasimg").style.display = "none";
+            drawImage();
         }
-        drawImage();
     }
     
     function save() {
-        document.getElementById("canvasimg").style.border = "2px solid";
         var dataURL = canvas.toDataURL();
-        $.ajax({
-            type: "POST",
-            url: "http://localhost:3000/api/project",
-            data: {
-                "projectName" : "projectName",
-                "uName" : "uName",
-                "imgString" : dataURL.substring(22,dataURL.length)
-            },
-            dataType: "JSON"
-        });
+        // example new project
+        // $.ajax({
+        //     type: "POST",
+        //     url: "http://localhost:3000/api/project",
+        //     data: {
+        //         "projectName" : "projectName",
+        //         "uName" : "uName",
+        //         "imgString" : dataURL.substring(22,dataURL.length)
+        //     },
+        //     dataType: "JSON"
+        // });
+
+        // example new annotation
+        // $.ajax({
+        //     type: "POST",
+        //     url: "http://localhost:3000/api/annotation",
+        //     data: {
+        //         "projectID" : "57000fdefe059f0c16df3120",
+        //         "uName" : "uName",
+        //         "imgString" : dataURL.substring(22,dataURL.length)
+        //     },
+        //     dataType: "JSON"
+        // });
     }
     
     function findxy(res, e) {
@@ -147,7 +158,6 @@
         <div style="position:absolute;top:17%;left:47%;width:10px;height:10px;background:black;" id="black" onclick="color(this)"></div>
         <div style="position:absolute;top:20%;left:43%;">Eraser</div>
         <div style="position:absolute;top:22%;left:45%;width:15px;height:15px;background:white;border:2px solid;" id="white" onclick="color(this)"></div>
-        <img id="canvasimg" style="position:absolute;top:10%;left:52%;" style="display:none;">
         <input type="button" value="save" id="btn" size="30" onclick="save()" style="position:absolute;top:55%;left:10%;">
         <input type="button" value="clear" id="clr" size="23" onclick="erase()" style="position:absolute;top:55%;left:15%;">
     </body>

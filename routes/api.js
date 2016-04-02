@@ -13,13 +13,7 @@ router.get('/', function(req, res) {
  * Add a new project to the db
  */
 router.post('/api/project', function(req, res) {
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
-    console.log("posted");
-=======
->>>>>>> origin/master
->>>>>>> Stashed changes
+
     var projectName = req.body.projectName;
     var userName = req.body.uName;
 	var imgString = req.body.imgString;
@@ -47,8 +41,14 @@ router.get('/api/project', function(req, res) {
 router.post('/api/annotation', function(req, res) {
     var projectID = req.body.projectID;
     var userName = req.body.uName;
+<<<<<<< Updated upstream
 	// var
 	console.log(req.body);
+=======
+    var imgString = req.body.imgString;
+    Project.addAnnotation(res,projectID,userName,imgString);
+
+>>>>>>> Stashed changes
 });
 
 /**
