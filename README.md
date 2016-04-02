@@ -15,6 +15,11 @@ all: GET /api/projectName
     returns a list of all project ids
 
 ##POST /api/project
-
+A post request to /api/project must be accompanied with JSON data within the string body. JSON data must be of the from below:
+    {
+        "projectName": "...",
+        "uName": "...",
+        "imgString": ""
+    }
 
 ##GET /api/annotation

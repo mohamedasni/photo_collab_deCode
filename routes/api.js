@@ -4,6 +4,7 @@ var router = express.Router();
 var mongoose = require('mongoose');
 var path = require('path');
 var Project = require('../models/Project').model;
+var multer = require('multer');
 var imageString; //This will be the converted image!
 
 function img_to_base64(imageString) {
@@ -13,6 +14,12 @@ function img_to_base64(imageString) {
 
 router.get('/', function(req, res) {
     res.send("Hello World!");
+});
+
+router.post('/api/imgTest', multer({ dest: './uploads/'}).single('image'), function(req, res) {
+	console.log(req.body.projectName);
+    console.log(req.file);
+	res.send("good");
 });
 
 /**
