@@ -46,6 +46,8 @@ returns
 
 ##POST /api/project
 A post request to /api/project must be accompanied with JSON data within the string body. JSON data must be of the from below:
+
+request body
 ```json
     {
         "projectID" : "project id (from get all projects) - string",
@@ -55,6 +57,9 @@ A post request to /api/project must be accompanied with JSON data within the str
 ```
 ##GET /api/annotation
 This is how you get an annotation from a project by index. Index = 0 is the first annotation, Index = annotation.length - 1 is the newest annotation. Returns annotation object.
+
+request body
+
 ```json
 {
 	"projectID" : "project id (from get all projects) - string",
@@ -84,6 +89,8 @@ This is how you add an annotation to an existing project. Returns image, usernam
 
 ##POST /api/comments
 This is how you add a comment to an existing annotation. Returns added comment.
+
+request body
 ```json
 {
 	"uName" : "name of user creating comment - string",
