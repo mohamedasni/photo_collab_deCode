@@ -1,11 +1,12 @@
 ```
- ________ ________  ___  __    ________          ________  _______   ________  ________  ________  _______           ________  ________  ___     
-|\  _____\\   __  \|\  \|\  \ |\   __  \        |\   ___ \|\  ___ \ |\   ____\|\   __  \|\   ___ \|\  ___ \         |\   __  \|\   __  \|\  \    
-\ \  \__/\ \  \|\  \ \  \/  /|\ \  \|\  \       \ \  \_|\ \ \   __/|\ \  \___|\ \  \|\  \ \  \_|\ \ \   __/|        \ \  \|\  \ \  \|\  \ \  \   
- \ \   __\\ \  \\\  \ \   ___  \ \  \\\  \       \ \  \ \\ \ \  \_|/_\ \  \    \ \  \\\  \ \  \ \\ \ \  \_|/__       \ \   __  \ \   ____\ \  \  
-  \ \  \_| \ \  \\\  \ \  \\ \  \ \  \\\  \       \ \  \_\\ \ \  \_|\ \ \  \____\ \  \\\  \ \  \_\\ \ \  \_|\ \       \ \  \ \  \ \  \___|\ \  \ 
-   \ \__\   \ \_______\ \__\\ \__\ \_______\       \ \_______\ \_______\ \_______\ \_______\ \_______\ \_______\       \ \__\ \__\ \__\    \ \__\
-    \|__|    \|_______|\|__| \|__|\|_______|        \|_______|\|_______|\|_______|\|_______|\|_______|\|_______|        \|__|\|__|\|__|     \|__|
+ ________  _______   ________  ________  ________  _______           ________  ________  ___     
+|\   ___ \|\  ___ \ |\   ____\|\   __  \|\   ___ \|\  ___ \         |\   __  \|\   __  \|\  \    
+\ \  \_|\ \ \   __/|\ \  \___|\ \  \|\  \ \  \_|\ \ \   __/|        \ \  \|\  \ \  \|\  \ \  \   
+ \ \  \ \\ \ \  \_|/_\ \  \    \ \  \\\  \ \  \ \\ \ \  \_|/__       \ \   __  \ \   ____\ \  \  
+  \ \  \_\\ \ \  \_|\ \ \  \____\ \  \\\  \ \  \_\\ \ \  \_|\ \       \ \  \ \  \ \  \___|\ \  \ 
+   \ \_______\ \_______\ \_______\ \_______\ \_______\ \_______\       \ \__\ \__\ \__\    \ \__\
+    \|_______|\|_______|\|_______|\|_______|\|_______|\|_______|        \|__|\|__|\|__|     \|__|
+                                                                                                 
                                                                                                                                                  
 ```
 # API docs
@@ -38,33 +39,20 @@ This is how you get an annotation from a project by index. Index = 0 is the firs
 returns
 ```json
 {
-        user: {
-            type: String,
-            required: true
-        },
+        user: "String",
         comments: [{
-            user: {
-                type: String,
-                required: true
-            },
-            text: {
-                type: String,
-                required: true
-            }
+            user: "String",
+            text: "String"
         }],
-        img: {
-            type: String,
-            required: true,
-            notEmpty: true
-        }
+        img: "String",
 }
 ```
 ##POST /api/annotation
 This is how you add an annotation to an existing project. Returns image, username and project name of added annotation.
 ```json
 {
-	"projectID" : project id (from get all projects) - string,
-	"uName" : name of user creating comment - string,
+	"projectID" : "project id (from get all projects) - string",
+	"uName" : "name of user creating comment - string",
 	"imgString" :
 }
 ```
@@ -73,10 +61,10 @@ This is how you add an annotation to an existing project. Returns image, usernam
 This is how you add a comment to an existing annotation. Returns added comment.
 ```json
 {
-	"uName" : name of user creating comment - string,
-    "text" : comment text - string,
-    "projectID" : project id (from get all projects) - string,
-    "annIndex" : index of annotation( valid from 0 to annotations.length - 1) - number
+	"uName" : "name of user creating comment - string",
+    "text" : "comment text - string",
+    "projectID" : "project id (from get all projects) - string",
+    "annIndex" : "index of annotation( valid from 0 to annotations.length - 1) - number"
 
 }
 ```
