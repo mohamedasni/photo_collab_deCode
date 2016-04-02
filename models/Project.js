@@ -69,19 +69,19 @@ ProjectSchema.statics.getAllProjects = function(req, res) {
         pro.forEach(function(project) {
             projectIDS.push(project);
         });
-        res.send(projectIDS);
+        res.json(projectIDS);
     });
 };
 
 ProjectSchema.statics.getProjectByName = function(req, res) {
     this.findOne({projectName: req.query.projectName}, function(err, pro){
-        res.send(pro);
+        res.json(pro);
     });
 };
 
 ProjectSchema.statics.getProjectByID = function(req, res) {
     this.findById(req.query.id, function(err, pro){
-       res.send(pro);
+       res.json(pro);
     });
 };
 
