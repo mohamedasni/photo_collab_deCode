@@ -26,6 +26,9 @@ ProjectSchema.statics.newProject = function(res, projectName, userName, imageStr
         user: userName
     });
 
+    var data = {user: userName, img: imageString};
+    project.annotation.push(data);
+
     project.save(function(err){
         if(err){
             if(err.code == 11000){
