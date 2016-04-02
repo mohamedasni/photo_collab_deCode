@@ -86,13 +86,19 @@ ProjectSchema.statics.getProjectByUser = function(req, res) {
 
 };
 
-ProjectSchema.statics.findAnnotation = function(req,res){
-    var data = this.annotation[req.query.index];
-    if(data != null){
-        res.send(data);
-    }else{
-        res.sendStatus(403);
-    }
+/**
+ * Gets an annotation from the db using project id and index
+ * @param           res       express response object
+ * @param  {String} projectID id of the project which has the annotation
+ * @param  {int}    annIndex  index of annotation in project's annotation array
+ * @return none
+ */
+ProjectSchema.statics.getAnnotationByID = function(res, projectID, annIndex){
+  var project = mongoose.model('Project', this);
+  console.log(projectID);
+  project.findById(projectID, function (err, pro) {
+    res.json(pro.annotation[annIndex]);
+  })
 };
 
 ProjectSchema.statics.addComment = function() {

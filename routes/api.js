@@ -29,7 +29,7 @@ router.post('/api/project',function (req, res) {
  * Get a project from the db
  */
 router.get('/api/project',function (req, res) {
-	
+
 	Project.findProject(req, res);
 });
 
@@ -44,8 +44,8 @@ router.post('/api/annotation',function (req, res){
 /**
  * get an annotation from the db
  */
-router.get('/api/annotation',function (req,res){
-	Project.findAnnotation(req.body.projectName, req.body.uName, req.body.imgString);
+router.get('/api/annotation',function (req, res){
+	Project.getAnnotationByID(res, req.query.projectID, req.query.annIndex);
 });
 
 /**
