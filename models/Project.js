@@ -23,7 +23,8 @@ var ProjectSchema = new mongoose.Schema({
 ProjectSchema.statics.newProject = function(res, projectName, userName, imageString){
     var project = new this({
         projectName: projectName,
-        user: userName
+        user: userName,
+        annotation: []
     });
 
     project.save(function(err){
@@ -38,11 +39,15 @@ ProjectSchema.statics.newProject = function(res, projectName, userName, imageStr
             }
         }else{
             console.log("project added successfully!");
-            var data = {user: userName, img: imageString};
+            /*var data = {user: userName, img: imageString};
             project.annotation.push(data);
-            res.send("Project Name: " + project.projectName + " User Name: " + project.user + " Image: " + project.annotation.img);
+            res.send("Project Name: " + project.projectName + " User Name: " + project.user + " Image: " + project.annotation.img);*/
         }
     });
+
+    var data = {user: userName, img: imageString};
+    project.annotation.push(data);
+    res.send("Project Name: " + project.projectName + " User Name: " + project.user + " Image: " + project.annotation.img);
 };
 
 ProjectSchema.statics.addAnnotation = function(project, userName, imageString){

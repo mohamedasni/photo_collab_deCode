@@ -28,8 +28,8 @@ router.get('/api/project',function (req, res) {
 
 router.post('/api/annotations',function (req, res){
 	Project.find({projectName: req.body.projectName}, function(err, pro) {
-		console.log(pro.annotation);
-		// Project.addAnnotation(pro, req.body.uName, req.body.imgString);
+		//console.log(pro.annotation);
+		Project.addAnnotation(pro, req.body.uName, req.body.imgString);
 	});
 });
 
