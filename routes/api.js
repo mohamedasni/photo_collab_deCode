@@ -17,7 +17,7 @@ router.get('/', function(req, res) {
 /**
  * Add a new project to the db
  */
-router.post('/api/project', multer({ dest: './uploads/'}).single('image'), function(req, res) {
+router.post('/api/project', function(req, res) {
     var projectName = req.body.projectName;
     var userName = req.body.uName;
 	var imgString = req.body.imgString;
@@ -45,11 +45,7 @@ router.get('/api/project', function(req, res) {
 router.post('/api/annotation', function(req, res) {
     var projectID = req.body.projectID;
     var userName = req.body.uName;
-	console.log(req.body);
-	fs.readFile(req.file.path, 'binary', function(err, original_data){
-	    // var b64 = "<img alt=\"Embedded Image\" src=\"data:image/png;base64, " + new Buffer(original_data, 'binary').toString('base64') + "\" />";
-    	Project.addAnnotation(res, projectName, userName, "stuff");
-	});
+	var
 });
 
 /**
