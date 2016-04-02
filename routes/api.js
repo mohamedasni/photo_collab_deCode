@@ -58,6 +58,7 @@ router.get('/api/annotation', function(req, res) {
  * Add a comment to an annotation
  */
 router.post('/api/comments', function(req, res) {
+	// Note: if there's no annotations this fails, need to fix that
     Project.addComment(req, res);
 });
 
