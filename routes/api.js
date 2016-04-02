@@ -26,11 +26,10 @@ router.get('/api/project',function (req, res) {
 	Project.findProject(req, res);
 });
 
-router.post('/api/annotations',function (req,res){
-	console.log(req.body.projectName);
-	Project.findOne({projectName: req.body.projectName}, function(err, pro) {
-		console.log(pro);
-		res.send(pro);
+router.post('/api/annotations',function (req, res){
+	Project.find({projectName: req.body.projectName}, function(err, pro) {
+		console.log(pro.annotation);
+		// Project.addAnnotation(pro, req.body.uName, req.body.imgString);
 	});
 });
 
