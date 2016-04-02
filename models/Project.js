@@ -89,10 +89,7 @@ ProjectSchema.statics.getAllProjects = function(req, res) {
         if (err) {
             res.send(err);
         } else {
-            pro.forEach(function(project) {
-                projectIDS.push(project);
-            });
-            res.json(projectIDS);
+            res.json(pro);
         }
     });
 };
@@ -157,7 +154,7 @@ ProjectSchema.statics.addComment = function(req, res) {
     };
     var id = req.body.projectID;
     var index = req.body.annIndex;
-    
+
     this.findOne({
         _id: id
     }, function(err, pro) {
