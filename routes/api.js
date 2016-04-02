@@ -4,8 +4,6 @@ var router = express.Router();
 var mongoose = require('mongoose');
 var path = require('path');
 var Project = require('../models/Project').model;
-var multer = require('multer');
-var fs = require('fs');
 
 router.get('/', function(req, res) {
     res.send("Hello World!");
@@ -14,13 +12,12 @@ router.get('/', function(req, res) {
 /**
  * Add a new project to the db
  */
-router.post('/api/project', multer({ dest: './uploads/'}).single('image'), function(req, res) {
+router.post('/api/project', function(req, res) {
+
     var projectName = req.body.projectName;
     var userName = req.body.uName;
-	fs.readFile(req.file.path, 'binary', function(err, original_data){
-	    var b64 = "<img alt=\"Embedded Image\" src=\"data:image/png;base64, " + new Buffer(original_data, 'binary').toString('base64') + "\" />";
-	    Project.newProject(res, projectName, userName, b64);
-	});
+	var imgString = req.body.imgString;
+	Project.newProject(res, projectName, userName, imgString);
 });
 
 /**
@@ -50,7 +47,16 @@ router.get('/api/project', function(req, res) {
  * add an annotation to the db
  */
 router.post('/api/annotation', function(req, res) {
-    Project.addAnnotation(res, req.body.projectID, req.body.uName, req.body.imgString);
+    var projectID = req.body.projectID;
+    var userName = req.body.uName;
+<<<<<<< Updated upstream
+	// var
+	console.log(req.body);
+=======
+    var imgString = req.body.imgString;
+    Project.addAnnotation(res,projectID,userName,imgString);
+
+>>>>>>> Stashed changes
 });
 
 /**
