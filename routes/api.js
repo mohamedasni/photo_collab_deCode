@@ -29,8 +29,15 @@ router.post('/api/project',function (req, res) {
  * Get a project from the db
  */
 router.get('/api/project',function (req, res) {
-
-	Project.findProject(req, res);
+	if(req.body.uName){
+		Project.getProjectByUser(req, res);
+	}else if(req.body.id){
+		Project.getProjectByID(req, res);
+	}else if(req.body.projectName){
+		Project.getProjectByName(req, res);
+	}else{
+		Project.getAllProjects(req, res);
+	}
 });
 
 /**
