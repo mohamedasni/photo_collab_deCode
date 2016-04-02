@@ -19,7 +19,7 @@ router.post('/api/project',function (req, res) {
 	var projectName = "testProject";
 	var userName = "testUser";
 	var imageString = "imageTest";
-	Project.newProject(projectName, userName, imageString);
+	Project.newProject(res, projectName, userName, imageString);
 });
 
 router.get('/api/project',function (req, res) {
