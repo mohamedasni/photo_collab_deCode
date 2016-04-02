@@ -66,20 +66,21 @@ ProjectSchema.statics.addAnnotation = function(res, projectID, userName, imageSt
     this.findOne({
         _id: projectID
     }, function(err, pro) {
-        var anns = pro.annotation;
-        anns.push(data);
-        this.update({
-            _id: projectID
-        }, {
-            annotation: anns
-        }, function(err, num) {
-            if (err) {
-                res.send(err);
-            } else {
-                var index = pro.annotation.length - 1;
-                res.send("Project Name: " + pro.projectName + " User Name: " + pro.user + " Image: " + pro.annotation[index].img);
-            }
-        });
+        // var anns = pro.annotation;
+        // anns.push(data);
+
+        // this.update({
+        //     _id: projectID
+        // }, {
+        //     annotation: anns
+        // }, function(err, num) {
+        //     if (err) {
+        //         res.send(err);
+        //     } else {
+        //         var index = pro.annotation.length - 1;
+        //         res.send("Project Name: " + pro.projectName + " User Name: " + pro.user + " Image: " + pro.annotation[index].img);
+        //     }
+        // });
     });
 };
 

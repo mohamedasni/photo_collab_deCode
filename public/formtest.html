@@ -7,10 +7,19 @@
 </head>
 <body>
     <script>
-            
+    
     </script>
+    <h1>project adding</h1>
     <form action="http://localhost:3000/api/project" method="post" enctype="multipart/form-data">
         <input type="text" name="projectName" id="">
+        <input type="text" name="uName" id="">
+        <input type="file" name="image" value="">
+        <input type="submit" name="name" value="Submit">
+    </form>
+
+    <h1>annotation adding</h1>
+    <form action="http://localhost:3000/api/annotation" method="post" enctype="multipart/form-data">
+        <input type="text" name="projectID" id="">
         <input type="text" name="uName" id="">
         <input type="file" name="image" value="">
         <input type="submit" name="name" value="Submit">

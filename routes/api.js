@@ -7,6 +7,7 @@ var Project = require('../models/Project').model;
 var multer = require('multer');
 var fs = require('fs');
 
+
 router.get('/', function(req, res) {
     res.send("Hello World!");
 });
@@ -42,7 +43,13 @@ router.get('/api/project', function(req, res) {
  * add an annotation to the db
  */
 router.post('/api/annotation', function(req, res) {
-    Project.addAnnotation(res, req.body.projectID, req.body.uName, req.body.imgString);
+    var projectID = req.body.projectID;
+    var userName = req.body.uName;
+	console.log(req.body);
+	fs.readFile(req.file.path, 'binary', function(err, original_data){
+	    // var b64 = "<img alt=\"Embedded Image\" src=\"data:image/png;base64, " + new Buffer(original_data, 'binary').toString('base64') + "\" />";
+    	Project.addAnnotation(res, projectName, userName, "stuff");
+	});
 });
 
 /**
