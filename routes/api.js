@@ -49,8 +49,16 @@ router.get('/api/project', function(req, res) {
 router.post('/api/annotation', function(req, res) {
     var projectID = req.body.projectID;
     var userName = req.body.uName;
+<<<<<<< Updated upstream
     var imgString = req.body.imgString;
     Project.addAnnotation(res,projectID,userName,imgString);
+=======
+	// var
+	console.log(req.body);
+    var imgString = req.body.imgString;
+    Project.addAnnotation(res,projectID,userName,imgString);
+
+>>>>>>> Stashed changes
 });
 
 /**

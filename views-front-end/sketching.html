@@ -143,8 +143,16 @@
 		image.onload = function() {
     		ctx.drawImage(image, 0, 0);
 		};
-		var base64 = "iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAIAAAACDbGyAAAAAXNSR0IArs4c6QAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9oMCRUiMrIBQVkAAAAZdEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIEdJTVBXgQ4XAAAADElEQVQI12NgoC4AAABQAAEiE+h1AAAAAElFTkSuQmCC"; // get base 64 string from db
-		image.src = "data:image/  png;base64," + base64;
+        //get image to draw
+        var projectID = "57000fdefe059f0c16df3120";
+        var annIndex = 0;
+        $.ajax({
+            type: "GET",
+            url: "http://localhost:3000/api/annotation?projectID=" + projectID + "&annIndex=" + annIndex,
+        }).done(function(d){
+            var base64 = d.img; // get base 64 string from db
+            image.src = "data:image/  png;base64," + base64;
+        });
     }
     </script>
     <body onload="init()">
