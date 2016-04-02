@@ -1,3 +1,4 @@
+```
  ________ ________  ___  __    ________          ________  _______   ________  ________  ________  _______           ________  ________  ___     
 |\  _____\\   __  \|\  \|\  \ |\   __  \        |\   ___ \|\  ___ \ |\   ____\|\   __  \|\   ___ \|\  ___ \         |\   __  \|\   __  \|\  \    
 \ \  \__/\ \  \|\  \ \  \/  /|\ \  \|\  \       \ \  \_|\ \ \   __/|\ \  \___|\ \  \|\  \ \  \_|\ \ \   __/|        \ \  \|\  \ \  \|\  \ \  \   
@@ -6,7 +7,7 @@
    \ \__\   \ \_______\ \__\\ \__\ \_______\       \ \_______\ \_______\ \_______\ \_______\ \_______\ \_______\       \ \__\ \__\ \__\    \ \__\
     \|__|    \|_______|\|__| \|__|\|_______|        \|_______|\|_______|\|_______|\|_______|\|_______|\|_______|        \|__|\|__|\|__|     \|__|
                                                                                                                                                  
-
+```
 # API docs
 
 There are 3 api routes: /api/project, /api/annotation, /api/comments
@@ -28,14 +29,14 @@ all: GET /api/projectName
 
 ##GET /api/annotation
 This is how you get an annotation from a project by index. Index = 0 is the first annotation, Index = annotation.length - 1 is the newest annotation. Returns annotation object.
-
+```json
 {
 	"projectID" : project id (from get all projects) - string,
 	"annIndex" : index of annotation( valid from 0 to annotations.length - 1) - number
 }
-
+```
 returns
-
+```json
 {
         user: {
             type: String,
@@ -57,20 +58,20 @@ returns
             notEmpty: true
         }
 }
-
+```
 ##POST /api/annotation
 This is how you add an annotation to an existing project. Returns image, username and project name of added annotation.
-
+```json
 {
 	"projectID" : project id (from get all projects) - string,
 	"uName" : name of user creating comment - string,
 	"imgString" :
 }
-
+```
 
 ##POST /api/comments
 This is how you add a comment to an existing annotation. Returns added comment.
-
+```json
 {
 	"uName" : name of user creating comment - string,
     "text" : comment text - string,
@@ -78,3 +79,4 @@ This is how you add a comment to an existing annotation. Returns added comment.
     "annIndex" : index of annotation( valid from 0 to annotations.length - 1) - number
 
 }
+```
