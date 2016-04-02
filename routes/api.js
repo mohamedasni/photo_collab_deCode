@@ -44,8 +44,7 @@ router.get('/api/project', function(req, res) {
  * add an annotation to the db
  */
 router.post('/api/annotation', function(req, res) {
-    console.log(req.body.blabla);
-    Project.addAnnotation(res, req.body.projectName, req.body.uName, req.body.imgString);
+    Project.addAnnotation(res, req.body.projectID, req.body.uName, req.body.imgString);
 });
 
 /**
@@ -56,7 +55,7 @@ router.get('/api/annotation', function(req, res) {
 });
 
 /**
- * Add a comment ot an annotation
+ * Add a comment to an annotation
  */
 router.post('/api/comments', function(req, res) {
     Project.addComment(req, res);
