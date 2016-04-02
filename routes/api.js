@@ -24,6 +24,14 @@ router.post('/api/project', multer({ dest: './uploads/'}).single('image'), funct
 });
 
 /**
+ * Delete Project
+ */
+router.post('/api/project/delete', function(req, res){
+    var projectID = req.body.projectID;
+    Project.deleteProject(res, projectID);
+});
+
+/**
  * Get a project from the db
  */
 router.get('/api/project', function(req, res) {
@@ -46,6 +54,15 @@ router.post('/api/annotation', function(req, res) {
 });
 
 /**
+ * Delete an annotation
+ */
+router.post('/api/annotation/delete', function(req, res) {
+    var index = req.body.annIndex;
+    var projectID = req.body.projectID;
+    Project.deleteAnnotation(res, index, projectID);
+});
+
+/**
  * get an annotation from the db
  */
 router.get('/api/annotation', function(req, res) {
@@ -58,6 +75,13 @@ router.get('/api/annotation', function(req, res) {
 router.post('/api/comments', function(req, res) {
 	// Note: if there's no annotations this fails, need to fix that
     Project.addComment(req, res);
+});
+
+/**
+ * Delete a comment
+ */
+router.post('/api/comments/delete', function(req, res){
+   Project.deleteComment(req, res);
 });
 
 module.exports = router;

@@ -56,6 +56,16 @@ ProjectSchema.statics.newProject = function(res, projectName, userName, imageStr
     });
 };
 
+ProjectSchema.statics.deleteProject = function(res, projectID){
+    this.remove({_id: projectID}, function(err, removed){
+        if(err){
+            res.send(err);
+        }else{
+            res.send(removed);
+        }
+    });
+};
+
 
 ProjectSchema.statics.addAnnotation = function(res, projectID, userName, imageString) {
     var data = {
@@ -78,6 +88,28 @@ ProjectSchema.statics.addAnnotation = function(res, projectID, userName, imageSt
             } else {
                 var index = pro.annotation.length - 1;
                 res.send("Project Name: " + pro.projectName + " User Name: " + pro.user + " Image: " + pro.annotation[index].img);
+            }
+        });
+    });
+};
+
+ProjectSchema.statics.deleteAnnotation = function(res, index, projectID){
+    this.findOne({
+        _id: projectID
+    }, function(err, pro) {
+        var anns = pro.annotation;
+        anns.splice(index);
+        this.update({
+            _id: projectID
+        }, {
+            annotation: anns
+        }, function(err, num) {
+            if (err) {
+                res.send(err);
+            } else {
+                res.send(num);
+                //var index = pro.annotation.length - 1;
+                //res.send("Project Name: " + pro.projectName + " User Name: " + pro.user + " Image: " + pro.annotation[index].img);
             }
         });
     });
@@ -144,7 +176,7 @@ ProjectSchema.statics.getAnnotationByID = function(res, projectID, annIndex) {
         } else {
             res.json(pro.annotation[annIndex]);
         }
-    })
+    });
 };
 
 ProjectSchema.statics.addComment = function(req, res) {
@@ -161,7 +193,9 @@ ProjectSchema.statics.addComment = function(req, res) {
         if(err){
             res.send(err);
         }else{
+            console.log(pro);
             var ann = pro.annotation[index];
+            console.log(ann);
             var com = ann.comments;
             com.push(data);
         }
@@ -174,6 +208,35 @@ ProjectSchema.statics.addComment = function(req, res) {
                 res.send(err);
             } else {
                 res.send(data);
+            }
+        });
+    });
+};
+
+ProjectSchema.statics.deleteComment = function(req, res){
+    var id = req.body.projectID;
+    var annIndex = req.body.annIndex;
+    var commIndex = req.body.commIndex;
+
+    this.findOne({
+        _id: id
+    }, function(err, pro) {
+        if(err){
+            res.send(err);
+        }else{
+            var ann = pro.annotation[annIndex];
+            var com = ann.comments;
+            com.splice(commIndex);
+        }
+        this.update({
+            _id: id
+        },{
+            annotation: ann
+        }, function(err, num) {
+            if (err) {
+                res.send(err);
+            } else {
+                res.send(num);
             }
         });
     });
