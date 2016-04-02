@@ -47,11 +47,11 @@ ProjectSchema.statics.newProject = function(res, projectName, userName, imageStr
         }]
     });
 
-    project.save(function(err) {
+    project.save(function(err, done) {
         if (err) {
             res.send(err);
         } else {
-            res.json(project);
+            res.send(done);
         }
     });
 };

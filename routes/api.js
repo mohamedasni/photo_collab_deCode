@@ -11,12 +11,6 @@ router.get('/', function(req, res) {
     res.send("Hello World!");
 });
 
-router.post('/api/imgTest', multer({ dest: './uploads/'}).single('image'), function(req, res) {
-    console.log(req.body.projectName);
-    console.log(req.file);
-    res.send("good");
-});
-
 /**
  * Add a new project to the db
  */
@@ -24,7 +18,7 @@ router.post('/api/project', multer({ dest: './uploads/'}).single('image'), funct
     var projectName = req.body.projectName;
     var userName = req.body.uName;
 	fs.readFile(req.file.path, 'binary', function(err, original_data){
-	    var b64 = new Buffer(original_data, 'binary').toString('base64');
+	    var b64 = "<img alt=\"Embedded Image\" src=\"data:image/png;base64, " + new Buffer(original_data, 'binary').toString('base64') + "\" />";
 	    Project.newProject(res, projectName, userName, b64);
 	});
 });
