@@ -148,11 +148,13 @@ ProjectSchema.statics.addComment = function(req, res) {
     var index = req.body.annIndex;
     this.findOne(
         {_id: id}, function(err, pro){
+            console.log(err);
         var comments = pro.annotation[index].comments;
         comments.push(data);
         this.update({
             _id: id
         }, function(err, num){
+            console.log(err);
             res.json(pro.annotation[index].comments);
         });
     });
