@@ -69,20 +69,20 @@ ProjectSchema.statics.newProject = function(res, projectName, userName, imageStr
     res.send("Project Name: " + project.projectName + " User Name: " + project.user + " Image: " + project.annotation[0].img);
 };
 
-ProjectSchema.statics.addAnnotation = function(res, project, userName, imageString) {
+ProjectSchema.statics.addAnnotation = function(res, projectID, userName, imageString) {
     var data = {
         user: userName,
         comment: [],
         img: imageString
     };
     this.findOne({
-        projectName: project
+        _id: projectID
     }, function(err, pro) {
         // console.log(pro);
         var anns = pro.annotation;
         anns.push(data);
         this.update({
-            projectName: project
+            _id: projectID
         }, {
             annotation: anns
         }, function(err, num) {
