@@ -139,9 +139,25 @@ ProjectSchema.statics.getAnnotationByID = function(res, projectID, annIndex) {
     })
 };
 
-ProjectSchema.statics.addComment = function() {
+ProjectSchema.statics.addComment = function(req, res) {
+    var data = {
+        user: req.body.uName,
+        text: req.body.text
+    };
+    var id = req.body.projectID;
+    var index = req.body.annIndex;
+    this.findOne(
+        {_id: id}, function(err, pro){
+        var comments = pro.annotation[index].comments;
+        comments.push(data);
+        this.update({
+            _id: id
+        }, function(err, num){
+            res.json(pro.annotation[index].comments);
+        });
+    });
+};
 
-}
 module.exports = {
     model: mongoose.model('Project', ProjectSchema),
     schema: ProjectSchema
