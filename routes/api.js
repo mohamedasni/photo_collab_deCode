@@ -5,18 +5,7 @@ var mongoose = require('mongoose');
 var path = require('path');
 var Project = require('../models/Project').model;
 var multer = require('multer');
-var imageString = img_to_base64(path); //This will be the converted image!
-
-function img_to_base64(pathString) {
-    var base64String;
-    return base64String.base64('/api/project/photo', function(err, data) {});
-}
-
-function base64_to_img(base64String){
-    var ImgString
-    return ImgString.img(base64String, '', '1', function(err, filepath) {});
-}
-
+var fs = require('fs');
 
 router.get('/', function(req, res) {
     res.send("Hello World!");
@@ -31,11 +20,13 @@ router.post('/api/imgTest', multer({ dest: './uploads/'}).single('image'), funct
 /**
  * Add a new project to the db
  */
-router.post('/api/project', function(req, res) {
+router.post('/api/project', multer({ dest: './uploads/'}).single('image'), function(req, res) {
     var projectName = req.body.projectName;
     var userName = req.body.uName;
-    var imageString = req.body.imgString;
-    Project.newProject(res, projectName, userName, imageString);
+	fs.readFile(req.file.path, 'binary', function(err, original_data){
+	    var b64 = new Buffer(original_data, 'binary').toString('base64');
+	    Project.newProject(res, projectName, userName, b64);
+	});
 });
 
 /**
