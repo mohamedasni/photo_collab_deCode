@@ -5,10 +5,16 @@ var mongoose = require('mongoose');
 var path = require('path');
 var Project = require('../models/Project').model;
 var multer = require('multer');
-var imageString; //This will be the converted image!
+var imageString = img_to_base64(path); //This will be the converted image!
 
-function img_to_base64(imageString) {
-    imageString.base64('/api/project/photo');
+function img_to_base64(pathString) {
+    var base64String;
+    return base64String.base64('/api/project/photo', function(err, data) {});
+}
+
+function base64_to_img(base64String){
+    var ImgString
+    return ImgString.img(base64String, '', '1', function(err, filepath) {});
 }
 
 

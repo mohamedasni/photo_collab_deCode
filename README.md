@@ -1,3 +1,14 @@
+```
+ ________  _______   ________  ________  ________  _______           ________  ________  ___     
+|\   ___ \|\  ___ \ |\   ____\|\   __  \|\   ___ \|\  ___ \         |\   __  \|\   __  \|\  \    
+\ \  \_|\ \ \   __/|\ \  \___|\ \  \|\  \ \  \_|\ \ \   __/|        \ \  \|\  \ \  \|\  \ \  \   
+ \ \  \ \\ \ \  \_|/_\ \  \    \ \  \\\  \ \  \ \\ \ \  \_|/__       \ \   __  \ \   ____\ \  \  
+  \ \  \_\\ \ \  \_|\ \ \  \____\ \  \\\  \ \  \_\\ \ \  \_|\ \       \ \  \ \  \ \  \___|\ \  \ 
+   \ \_______\ \_______\ \_______\ \_______\ \_______\ \_______\       \ \__\ \__\ \__\    \ \__\
+    \|_______|\|_______|\|_______|\|_______|\|_______|\|_______|        \|__|\|__|\|__|     \|__|
+                                                                                                 
+                                                                                                                                                 
+```
 # API docs
 
 There are 3 api routes: /api/project, /api/annotation, /api/comments
@@ -23,3 +34,42 @@ A post request to /api/project must be accompanied with JSON data within the str
     }
 
 ##GET /api/annotation
+This is how you get an annotation from a project by index. Index = 0 is the first annotation, Index = annotation.length - 1 is the newest annotation. Returns annotation object.
+```json
+{
+	"projectID" : project id (from get all projects) - string,
+	"annIndex" : index of annotation( valid from 0 to annotations.length - 1) - number
+}
+```
+returns
+```json
+{
+        user: "String",
+        comments: [{
+            user: "String",
+            text: "String"
+        }],
+        img: "String",
+}
+```
+##POST /api/annotation
+This is how you add an annotation to an existing project. Returns image, username and project name of added annotation.
+```json
+{
+	"projectID" : "project id (from get all projects) - string",
+	"uName" : "name of user creating comment - string",
+	"imgString" :
+}
+```
+
+##POST /api/comments
+This is how you add a comment to an existing annotation. Returns added comment.
+```json
+{
+	"uName" : "name of user creating comment - string",
+    "text" : "comment text - string",
+    "projectID" : "project id (from get all projects) - string",
+    "annIndex" : "index of annotation( valid from 0 to annotations.length - 1) - number"
+
+}
+```
