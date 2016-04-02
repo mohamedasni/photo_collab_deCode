@@ -62,7 +62,7 @@ ProjectSchema.statics.findProject = function(req, res) {
 };
 
 ProjectSchema.methods.findAnnotation = function(req,res){
-    var data = this.annotation[req.body.index];
+    var data = this.annotation[req.query.index];
     if(data != null){
         res.send(data);
     }else{
