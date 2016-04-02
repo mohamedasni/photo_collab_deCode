@@ -63,7 +63,7 @@ ProjectSchema.statics.addAnnotation = function(res, project, userName, imageStri
   	});
 };
 
-ProjectSchema.statics.findProject = function(req, res) {
+ProjectSchema.statics.getAllProjects = function(req, res) {
   var project = mongoose.model('Project', this);
   project.findOne({projectName: req.query.name}, function(err, project) {
     if(project != null){
@@ -74,7 +74,19 @@ ProjectSchema.statics.findProject = function(req, res) {
   });
 };
 
-ProjectSchema.methods.findAnnotation = function(req,res){
+ProjectSchema.statics.GetProjectByID = function(req, res) {
+
+};
+
+ProjectSchema.statics.GetProjectByName = function(req, res) {
+
+};
+
+ProjectSchema.statics.getProjectByUser = function(req, res) {
+
+};
+
+ProjectSchema.statics.findAnnotation = function(req,res){
     var data = this.annotation[req.query.index];
     if(data != null){
         res.send(data);
@@ -83,6 +95,9 @@ ProjectSchema.methods.findAnnotation = function(req,res){
     }
 };
 
+ProjectSchema.statics.addComment = function() {
+
+}
 module.exports = {
     model: mongoose.model('Project', ProjectSchema),
     schema: ProjectSchema
