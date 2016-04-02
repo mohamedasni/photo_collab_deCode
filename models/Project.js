@@ -26,9 +26,6 @@ ProjectSchema.statics.newProject = function(res, projectName, userName, imageStr
         user: userName
     });
 
-    var data = {user: userName, img: imageString};
-    project.annotation.push(data);
-
     project.save(function(err){
         if(err){
             if(err.code == 11000){
@@ -41,13 +38,14 @@ ProjectSchema.statics.newProject = function(res, projectName, userName, imageStr
             }
         }else{
             console.log("project added successfully!");
-            // addIniAnnotation(project, userName, imageString);
+            var data = {user: userName, img: imageString};
+            project.annotation.push(data);
             res.send("Project Name: " + project.projectName + " User Name: " + project.user + " Image: " + project.annotation.img);
         }
     });
 };
 
-ProjectSchema.methods.addIniAnnotation = function(project, userName, imageString){
+ProjectSchema.statics.addAnnotation = function(project, userName, imageString){
     var data = {user: userName, img: imageString};
     project.annotation.push(data);
 };
