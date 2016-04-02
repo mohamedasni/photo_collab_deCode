@@ -6,7 +6,9 @@ var path = require('path');
 var Project = require('../models/Project').model;
 var multer = require('multer');
 var fs = require('fs');
+var cors = require('cors');
 
+router.use(cors())
 
 router.get('/', function(req, res) {
     res.send("Hello World!");
