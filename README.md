@@ -22,8 +22,27 @@ This is how you fetch projects. You can fetch by id, name, user, or get all
     return project with the given projectName
 - user: GET /api/project?uName=username
     returns all projects by the given userName
-- all: GET /api/projectName
-    returns a list of all project ids
+- all: GET /api/project
+    returns a list of all projects
+
+returns 
+
+```json
+{
+    "projectName": "String",
+    "user": "String",
+    "annotation": [{
+        "user": "String",
+        "comments": [{
+            "user": "String",
+            "text": "String"
+        }],
+        "img": "String",
+	}]
+};
+```
+
+
 
 ##POST /api/project
 A post request to /api/project must be accompanied with JSON data within the string body. JSON data must be of the from below:
