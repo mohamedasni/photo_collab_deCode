@@ -27,7 +27,9 @@ router.get('/api/project',function (req, res) {
 });
 
 router.post('/api/annotations',function (req,res){
-	Project.addAnnotation(req,res, imageString);
+	var pro = Project.findProject(req, res);
+	var user = pro.user;
+	Project.addAnnotation(pro, user, "bull");
 });
 
 router.get('/api/annotations',function (req,res){
