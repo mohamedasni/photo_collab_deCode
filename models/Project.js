@@ -54,7 +54,7 @@ ProjectSchema.methods.addIniAnnotation = function(project, userName, imageString
 
 ProjectSchema.statics.findProject = function(req, res) {
   var project = mongoose.model('Project', this);
-  project.find({name: req.body.name}, function(err, project) {
+  project.findOne({projectName: req.query.name}, function(err, project) {
     console.log(project);
     res.send(JSON.stringify(project));
   });
