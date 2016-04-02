@@ -51,7 +51,7 @@ ProjectSchema.statics.newProject = function(res, projectName, userName, imageStr
         if (err) {
             res.send(err);
         } else {
-            res.jsonp(done);
+            res.json(done);
         }
     });
 };
@@ -76,21 +76,21 @@ ProjectSchema.statics.addAnnotation = function(res, projectID, userName, imageSt
     this.findOne({
         _id: projectID
     }, function(err, pro) {
-        // var anns = pro.annotation;
-        // anns.push(data);
+        var anns = pro.annotation;
+        anns.push(data);
 
-        // this.update({
-        //     _id: projectID
-        // }, {
-        //     annotation: anns
-        // }, function(err, num) {
-        //     if (err) {
-        //         res.send(err);
-        //     } else {
-        //         var index = pro.annotation.length - 1;
-        //         res.send("Project Name: " + pro.projectName + " User Name: " + pro.user + " Image: " + pro.annotation[index].img);
-        //     }
-        // });
+        this.update({
+             _id: projectID
+         }, {
+             annotation: anns
+         }, function(err, num) {
+             if (err) {
+                 res.send(err);
+             } else {
+                 var index = pro.annotation.length - 1;
+                 res.send("Project Name: " + pro.projectName + " User Name: " + pro.user + " Image: " + pro.annotation[index].img);
+             }
+         });
     });
 };
 
