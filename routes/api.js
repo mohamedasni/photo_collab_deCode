@@ -20,10 +20,8 @@ router.get('/', function(req, res) {
 router.post('/api/project', multer({ dest: './uploads/'}).single('image'), function(req, res) {
     var projectName = req.body.projectName;
     var userName = req.body.uName;
-	fs.readFile(req.file.path, 'binary', function(err, original_data){
-	    var b64 = "<img alt=\"Embedded Image\" src=\"data:image/png;base64, " + new Buffer(original_data, 'binary').toString('base64') + "\" />";
-	    Project.newProject(res, projectName, userName, b64);
-	});
+	var imgString = req.body.imgString;
+	Project.newProject(res, projectName, userName, imgString);
 });
 
 /**
