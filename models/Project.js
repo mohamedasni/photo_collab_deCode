@@ -31,22 +31,24 @@ ProjectSchema.statics.newProject = function(res, projectName, userName, imageStr
 
     project.save(function(err){
         if(err){
+            console.log("err1");
             if(err.code == 11000){
                 //this is if the project already exists error!
                 console.log("that project already exists!");
                 res.sendStatus(406);
+                console.log("err2");
                 return;
+            }else{
+                //if some other mongo weird error happens!
+                res.sendStatus(403);
+                console.log("err3");
             }
-
-            //if some other mongo weird error happens!
-            res.sendStatus(403);
         }else{
             console.log("project added successfully!");
+            // addIniAnnotation(project, userName, imageString);
+            res.send("Project Name: " + project.projectName + " User Name: " + project.user + " Image: " + project.annotation.img);
         }
     });
-
-    // addIniAnnotation(project, userName, imageString);
-    res.send("Project Name: " + project.projectName + " User Name: " + project.user + " Image: " + project.annotation.img);
 };
 
 ProjectSchema.methods.addIniAnnotation = function(project, userName, imageString){
