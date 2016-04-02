@@ -37,19 +37,19 @@ A post request to /api/project must be accompanied with JSON data within the str
 This is how you get an annotation from a project by index. Index = 0 is the first annotation, Index = annotation.length - 1 is the newest annotation. Returns annotation object.
 ```json
 {
-	"projectID" : project id (from get all projects) - string,
-	"annIndex" : index of annotation( valid from 0 to annotations.length - 1) - number
+	"projectID" : "project id (from get all projects) - string",
+	"annIndex" : "index of annotation( valid from 0 to annotations.length - 1) - number"
 }
 ```
 returns
 ```json
 {
-        user: "String",
-        comments: [{
-            user: "String",
-            text: "String"
+        "user": "String",
+        "comments": [{
+            "user": "String",
+            "text": "String"
         }],
-        img: "String",
+        "img": "String",
 }
 ```
 ##POST /api/annotation

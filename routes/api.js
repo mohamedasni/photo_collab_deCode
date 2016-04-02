@@ -23,9 +23,9 @@ router.get('/', function(req, res) {
 });
 
 router.post('/api/imgTest', multer({ dest: './uploads/'}).single('image'), function(req, res) {
-	console.log(req.body.projectName);
+    console.log(req.body.projectName);
     console.log(req.file);
-	res.send("good");
+    res.send("good");
 });
 
 /**
