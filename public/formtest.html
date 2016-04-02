@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Form Test</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+</head>
+<body>
+    <script>
+        $(form).submit(function(e){
+            console.log(e);
+        })
+    </script>
+    <form action="http://localhost:3000/api/imgTest" method="post" enctype="multipart/form-data">
+        <input type="text" name="projectName" id="">
+        <input type="text" name="uName" id="">
+        <input type="file" name="image" value="">
+        <input type="submit" name="name" value="Submit">
+    </form>
+</body>
+</html>
