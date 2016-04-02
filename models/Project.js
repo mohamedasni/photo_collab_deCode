@@ -45,13 +45,12 @@ ProjectSchema.statics.newProject = function(req, res, imageString){
     addIniAnnotation(project, req, imageString);
 };
 
-ProjectSchema.methods.addIniAnnotation = function(req, imageString){
+ProjectSchema.methods.addIniAnnotation = function(project, req, imageString){
     var data = {user: req.body.uName, img: imageString};
-    this.annotation.push(data);
+    project.annotation.push(data);
 };
 
-ProjectSchema.methods.findProject = function(req, res) {
-  // var project = mongoose.model('Project', ProjectSchema);
+ProjectSchema.statics.findProject = function(req, res) {
   res.send("find project");
 };
 

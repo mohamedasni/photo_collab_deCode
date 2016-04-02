@@ -1,10 +1,11 @@
 /*api_post.js*/
 var express = require('express');
 var router = express.Router();
-var Project = require('../models/Project');
 var mongoose = require('mongoose');
 var path = require('path');
+var Project = require('../models/Project').model;
 var imageString; //This will be the converted image!
+
 function img_to_base64(imageString){
 	imageString.base64('/api/project/photo');
 }
@@ -15,11 +16,10 @@ router.get('/', function(req, res) {
 });
 
 router.post('/api/project',function (req, res) {
-	Project.newProject(req,res, imageString);
 });
 
 router.get('/api/project',function (req, res) {
-	Project.findProject(req,res);
+	Project.findProject(req, res);
 });
 
 router.post('/api/annotations',function (req,res){
