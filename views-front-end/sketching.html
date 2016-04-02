@@ -1,4 +1,5 @@
 <html>
+    <script   src="https://code.jquery.com/jquery-2.2.2.min.js"   integrity="sha256-36cp2Co+/62rEAAYHLmRCPIych47CvdM+uTBJwSzWjI="   crossorigin="anonymous"></script>
     <script type="text/javascript">
     var canvas, ctx, flag = false,
         prevX = 0,
@@ -83,7 +84,16 @@
     function save() {
         document.getElementById("canvasimg").style.border = "2px solid";
         var dataURL = canvas.toDataURL();
-        alert(dataURL.substring(22,dataURL.length));
+        $.ajax({
+            type: "POST",
+            url: "http://localhost:3000/api/project",
+            data: {
+                "projectName" : "projectName",
+                "uName" : "uName",
+                "imgString" : dataURL.substring(22,dataURL.length)
+            },
+            dataType: "JSON"
+        });
     }
     
     function findxy(res, e) {

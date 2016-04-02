@@ -4,11 +4,6 @@ var router = express.Router();
 var mongoose = require('mongoose');
 var path = require('path');
 var Project = require('../models/Project').model;
-var multer = require('multer');
-var fs = require('fs');
-var cors = require('cors');
-
-router.use(cors())
 
 router.get('/', function(req, res) {
     res.send("Hello World!");
@@ -18,6 +13,13 @@ router.get('/', function(req, res) {
  * Add a new project to the db
  */
 router.post('/api/project', function(req, res) {
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+    console.log("posted");
+=======
+>>>>>>> origin/master
+>>>>>>> Stashed changes
     var projectName = req.body.projectName;
     var userName = req.body.uName;
 	var imgString = req.body.imgString;
@@ -45,7 +47,15 @@ router.get('/api/project', function(req, res) {
 router.post('/api/annotation', function(req, res) {
     var projectID = req.body.projectID;
     var userName = req.body.uName;
+<<<<<<< Updated upstream
 	var
+=======
+<<<<<<< HEAD
+	console.log(req.body);
+=======
+	var
+>>>>>>> origin/master
+>>>>>>> Stashed changes
 });
 
 /**
