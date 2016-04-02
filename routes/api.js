@@ -45,7 +45,7 @@ router.get('/api/project', function(req, res) {
 router.post('/api/annotation', function(req, res) {
     var projectID = req.body.projectID;
     var userName = req.body.uName;
-	var
+	// var
 });
 
 /**
