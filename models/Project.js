@@ -31,17 +31,13 @@ ProjectSchema.statics.newProject = function(res, projectName, userName, imageStr
 
     project.save(function(err){
         if(err){
-            console.log("err1");
             if(err.code == 11000){
                 //this is if the project already exists error!
                 console.log("that project already exists!");
                 res.sendStatus(406);
-                console.log("err2");
-                return;
-            }else{
+            } else {
                 //if some other mongo weird error happens!
                 res.sendStatus(403);
-                console.log("err3");
             }
         }else{
             console.log("project added successfully!");
