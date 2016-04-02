@@ -157,44 +157,25 @@ ProjectSchema.statics.addComment = function(req, res) {
     };
     var id = req.body.projectID;
     var index = req.body.annIndex;
-    var annID;
-    this.findOne({_id: id}, function(err, pro) {
-        console.log(pro.annotation[0]._id);
-        annID = pro.annotation[index]._id;
-        console.log(annID);
+    
+    this.findOne({
+        _id: id
+    }, function(err, pro) {
+        var ann = pro.annotation[index];
+        var com = ann.comments;
+        com.push(data);
+        this.update({
+            _id: id
+        },{
+            annotation: ann
+        }, function(err, num) {
+            if (err) {
+                res.send(err);
+            } else {
+                res.send(data);
+            }
+        });
     });
-
-
-
-    this.findByIdAndUpdate(
-        annID,
-        {$push: {comments: data}},
-        // {safe: true, upsert: true},
-        function(err, pro) {
-            console.log(annID);
-            console.log(pro);
-
-        }
-    );
-
-
-    // this.findOne({
-    //         _id: id
-    //     }, function(err, pro) {
-    //         console.log(pro);
-    //         var comments = pro.annotation[index].comments;
-    //         var new_id = pro.annotation[index]._id;
-    //         console.log(id);
-    //         comments.push(data);
-    //         this.update({
-    //             _id: id
-    //         }, {
-    //             annotation[annIndex].comments: comments
-    //         }, function(err, num) {
-    //             console.log(num);
-    //             res.json(pro.annotation[index].comments);
-    //         });
-    // });
 };
 
 module.exports = {
