@@ -27,9 +27,11 @@ router.get('/api/project',function (req, res) {
 });
 
 router.post('/api/annotations',function (req,res){
-	var pro = Project.findProject(req, res);
-	var user = pro.user;
-	Project.addAnnotation(pro, user, "bull");
+	console.log(req.body.projectName);
+	Project.findOne({projectName: req.body.projectName}, function(err, pro) {
+		console.log(pro);
+		res.send(pro);
+	});
 });
 
 router.get('/api/annotations',function (req,res){

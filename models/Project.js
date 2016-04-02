@@ -70,10 +70,6 @@ ProjectSchema.methods.findAnnotation = function(req,res){
     }
 };
 
-ProjectSchema.methods.addAnnotation = function(req,res, imageString){
-    //blabla
-};
-
 module.exports = {
     model: mongoose.model('Project', ProjectSchema),
     schema: ProjectSchema
