@@ -16,9 +16,9 @@ router.get('/', function(req, res) {
 });
 
 router.post('/api/project',function (req, res) {
-	var projectName = "testProject";
-	var userName = "testUser";
-	var imageString = "imageTest";
+	var projectName = req.body.projectName;
+	var userName = req.body.uName;
+	var imageString = req.body.imgString;
 	Project.newProject(res, projectName, userName, imageString);
 });
 
@@ -26,15 +26,12 @@ router.get('/api/project',function (req, res) {
 	Project.findProject(req, res);
 });
 
-router.post('/api/annotations',function (req, res){
-	Project.find({projectName: req.body.projectName}, function(err, pro) {
-		//console.log(pro.annotation);
-		Project.addAnnotation(pro, req.body.uName, req.body.imgString);
-	});
+router.post('/api/annotation',function (req, res){
+	Project.addAnnotation(res, req.body.projectName, req.body.uName, req.body.imgString);
 });
 
-router.get('/api/annotations',function (req,res){
-	Project.findAnnotation(req,res);
+router.get('/api/annotation',function (req,res){
+	Project.findAnnotation(req.body.projectName, req.body.uName, req.body.imgString);
 });
 
 router.post('/api/comments',function (req,res){

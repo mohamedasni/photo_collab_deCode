@@ -47,12 +47,20 @@ ProjectSchema.statics.newProject = function(res, projectName, userName, imageStr
 
     var data = {user: userName, img: imageString};
     project.annotation.push(data);
-    res.send("Project Name: " + project.projectName + " User Name: " + project.user + " Image: " + project.annotation.img);
+    res.send("Project Name: " + project.projectName + " User Name: " + project.user + " Image: " + project.annotation[0].img);
 };
 
-ProjectSchema.statics.addAnnotation = function(project, userName, imageString){
-    var data = {user: userName, img: imageString};
-    project.annotation.push(data);
+ProjectSchema.statics.addAnnotation = function(res, project, userName, imageString){
+    var data = {user: userName, comment: [], img: imageString};
+    this.findOne({projectName: project}, function(err, pro) {
+      // console.log(pro);
+  		var anns = pro.annotation;
+      anns.push(data);
+      this.update({projectName: project}, {annotation: anns}, function(err, num) {
+        var index = pro.annotation.length - 1;
+        res.send("Project Name: " + pro.projectName + " User Name: " + pro.user + " Image: " + pro.annotation[index].img);
+    	});
+  	});
 };
 
 ProjectSchema.statics.findProject = function(req, res) {
