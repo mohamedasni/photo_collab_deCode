@@ -51,7 +51,7 @@ ProjectSchema.statics.newProject = function(res, projectName, userName, imageStr
         if (err) {
             res.send(err);
         } else {
-            res.send(done);
+            res.jsonp(done);
         }
     });
 };
