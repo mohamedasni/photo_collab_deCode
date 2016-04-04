@@ -47,7 +47,7 @@ returns
 ##POST /api/project
 A post request to /api/project must be accompanied with JSON data within the string body. JSON data must be of the from below:
 
-##DELETE /api/project
+##DELETE /api/project/delete
 A delete request to /api/project removes the project with the matching id. Returns OK status.
 
 request body
@@ -98,7 +98,7 @@ This is how you add an annotation to an existing project. Returns image, usernam
 }
 ```
 
-##DELETE /api/annotation
+##DELETE /api/annotation/delete
 This deletes annotation at index from project with id.
 
 ```json
@@ -122,7 +122,7 @@ request body
 }
 ```
 
-##DELETE /api/comments
+##DELETE /api/comments/delete
 This deletes annotation at index from project with id.
 
 ```json
